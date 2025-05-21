@@ -1,4 +1,5 @@
-tests\BaseTest.class
-utils\ConfigReader.class
-tests\LoginTest.class
+base\BaseTest.class
 pages\LoginPage.class
+utils\ConfigReader.class
+utils\ExcelUtil.class
+tests\LoginTest.class

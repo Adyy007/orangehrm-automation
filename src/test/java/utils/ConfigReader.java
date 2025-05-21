@@ -10,7 +10,7 @@ public class ConfigReader {
     public static Properties initProperties() {
         prop = new Properties();
         try {
-            FileInputStream ip = new FileInputStream("src/main/resources/config.properties");
+            FileInputStream ip = new FileInputStream("src/test/resources/config.properties");
             prop.load(ip);
         } catch (IOException e) {
             e.printStackTrace();

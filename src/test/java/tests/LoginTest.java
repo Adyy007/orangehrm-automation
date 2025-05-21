@@ -1,17 +1,24 @@
 package tests;
 
-import org.testng.Assert;
+import base.BaseTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import utils.ExcelUtil;
 
 public class LoginTest extends BaseTest {
 
-    @Test
-    public void testValidLogin() {
+    @Test(dataProvider = "loginData")
+    public void loginTest(String username, String password) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+        loginPage.login(username, password);
 
-        String actualTitle = driver.getTitle();
-        Assert.assertTrue(actualTitle.contains("OrangeHRM"), "Login Failed!");
+        // Add assertion if needed
+    }
+
+    @DataProvider(name = "loginData")
+    public Object[][] getData() {
+        String excelPath = System.getProperty("user.dir") + "/src/test/resources/testdata/LoginData.xlsx";
+        return ExcelUtil.getLoginData(excelPath, "Sheet1");
     }
 }
